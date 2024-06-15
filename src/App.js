@@ -7,8 +7,11 @@ class App extends Component {
   render() {
     return (
       <main className="main-container">
-        <Todo />
-        <Todolist />
+        <div className="wrap">
+          <h1 style={{ textAlign: "center" }}>To Do List!</h1>
+          <Todo />
+          <Todolist />
+        </div>
       </main>
     );
   }

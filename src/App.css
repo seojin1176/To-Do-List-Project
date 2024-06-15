@@ -1,0 +1,41 @@
+body {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 243, 229);
+}
+
+.background-light-green {
+  background-color: lightgreen;
+}
+.background-light-white {
+  background-color: white;
+}
+
+.main-box {
+  background-color: rgb(255, 223, 228);
+  width: 100%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  border-radius: 2px;
+}
+
+.todo-wrap {
+  width: 85%;
+  margin: auto;
+}
+
+.add-todolist {
+  border: none;
+  margin-bottom: 20px;
+  display: block;
+  width: 100px;
+  height: 40px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.add-todolist-wrap {
+  display: flex;
+  justify-content: right;
+}
