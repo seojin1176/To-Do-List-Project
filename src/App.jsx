@@ -1,6 +1,5 @@
 import { Component } from "react";
-import Todolist from "./Todolist";
-import Todo from "./Todo";
+import Todolist from "./todoList";
 import "./App.css";
 
 class App extends Component {
@@ -9,7 +8,6 @@ class App extends Component {
       <main className="main-container">
         <div className="wrap">
           <h1 style={{ textAlign: "center" }}>To Do List!</h1>
-          <Todo />
           <Todolist />
         </div>
       </main>
