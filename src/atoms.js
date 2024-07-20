@@ -6,7 +6,7 @@ const { persistAtom } = recoilPersist();
 
 export const todoTitleState = atom({
   key: "inputValuesState",
-  default: [],
+  default: {},
 });
 
 export const comentValuesState = atom({

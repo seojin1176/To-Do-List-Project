@@ -28,7 +28,7 @@ function TodoModal({ isOpen, closeModal }) {
   };
 
   const addTodo = () => {
-    if (todoTitle.value === "") {
+    if (!todoTitle.value) {
       alert("값을 입력해주세요");
       return;
     }
