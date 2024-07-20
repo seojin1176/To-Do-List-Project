@@ -3,12 +3,12 @@ import React from "react";
 import { useRecoilState } from "recoil";
 import Modal from "react-modal";
 
-import { inputValuesState, comentValuesState } from "./atoms";
+import { todoTitleState, comentValuesState } from "./atoms";
 
 import "./App.css";
 
 function TodoModal({ isOpen, closeModal }) {
-  const [TodoTitle, setTodoTitle] = useRecoilState(inputValuesState);
+  const [todoTitle, setTodoTitle] = useRecoilState(todoTitleState);
   const [comentValue, setComentValue] = useRecoilState(comentValuesState);
 
   const changeInput = (e) => {
@@ -28,8 +28,7 @@ function TodoModal({ isOpen, closeModal }) {
   };
 
   const addTodo = () => {
-    const modalInput = document.querySelector(".modalInput");
-    if (modalInput.value === "") {
+    if (todoTitle.value === "") {
       alert("값을 입력해주세요");
       return;
     }
@@ -50,7 +49,7 @@ function TodoModal({ isOpen, closeModal }) {
           required
           placeholder="입력"
           type="text"
-          value={TodoTitle.value}
+          value={todoTitle.value}
           onChange={changeInput}
         ></input>
         <h4>설명</h4>
