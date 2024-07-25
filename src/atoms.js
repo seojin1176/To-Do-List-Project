@@ -4,9 +4,9 @@ import { recoilPersist } from "recoil-persist";
 
 const { persistAtom } = recoilPersist();
 
-export const inputValuesState = atom({
+export const todoTitleState = atom({
   key: "inputValuesState",
-  default: "",
+  default: {},
 });
 
 export const comentValuesState = atom({

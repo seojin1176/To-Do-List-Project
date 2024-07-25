@@ -1,13 +1,15 @@
 //MModal.js
 import React from "react";
-import Modal from "react-modal";
 import { useRecoilState } from "recoil";
-import { inputValuesState, comentValuesState } from "./atoms";
+import Modal from "react-modal";
+
+import { todoTitleState, comentValuesState } from "./atoms";
+
 import "./App.css";
 
-function MModal({ isOpen, closeModal, closmodal }) {
-  const [inputValue, setinputvalue] = useRecoilState(inputValuesState);
-  const [comentValue, setcomentValue] = useRecoilState(comentValuesState);
+function TodoModal({ isOpen, closeModal }) {
+  const [todoTitle, setTodoTitle] = useRecoilState(todoTitleState);
+  const [comentValue, setComentValue] = useRecoilState(comentValuesState);
 
   const changeInput = (e) => {
     const newState = {
@@ -15,28 +17,28 @@ function MModal({ isOpen, closeModal, closmodal }) {
       value: e.target.value,
       check: false,
     };
-    setinputvalue(newState);
+    setTodoTitle(newState);
   };
 
   const comentInput = (e) => {
     const newState = {
       value: e.target.value,
     };
-    setcomentValue(newState);
+    setComentValue(newState);
   };
 
-  const handleinputvlaue = () => {
-    const modalInput = document.querySelector(".modalInput");
-    if (modalInput.value === "") {
+  const addTodo = () => {
+    if (!todoTitle.value) {
       alert("값을 입력해주세요");
-    } else {
-      closeModal();
+      return;
     }
+    closeModal();
+    setTodoTitle("");
   };
 
-  const closeinputvlaue = () => {
-    closmodal();
-    setinputvalue("");
+  const closeInputVlaue = () => {
+    closeModal();
+    setTodoTitle("");
   };
 
   const modalContent = (
@@ -48,7 +50,7 @@ function MModal({ isOpen, closeModal, closmodal }) {
           required
           placeholder="입력"
           type="text"
-          value={inputValue.value}
+          value={todoTitle.value}
           onChange={changeInput}
         ></input>
         <h4>설명</h4>
@@ -60,10 +62,10 @@ function MModal({ isOpen, closeModal, closmodal }) {
           value={comentValue.value}
           onChange={comentInput}
         ></input>
-        <button onClick={handleinputvlaue} className="reqButton">
+        <button onClick={addTodo} className="reqButton">
           추가
         </button>
-        <button onClick={closeinputvlaue} className="reqButton">
+        <button onClick={closeInputVlaue} className="reqButton">
           닫기
         </button>
       </div>
@@ -71,14 +73,10 @@ function MModal({ isOpen, closeModal, closmodal }) {
   );
 
   return (
-    <Modal
-      isOpen={isOpen}
-      onRequestClose={handleinputvlaue}
-      contentLabel="Exaple modal"
-    >
+    <Modal isOpen={isOpen} onRequestClose={addTodo} contentLabel="Exaple modal">
       {modalContent}
     </Modal>
   );
 }
 
-export default MModal;
+export default TodoModal;

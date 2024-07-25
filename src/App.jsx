@@ -1,24 +1,24 @@
 //App.jsx
 import React from "react";
-import "../src/App.css";
 import { useRecoilState } from "recoil";
+
 import { modalState } from "./atoms";
-import MModal from "./MModal";
+import TodoModal from "./TodoModal";
+
+import "../src/App.css";
 
 function App() {
-  const [modal, setModal] = useRecoilState(modalState);
+  const [todoModalVisible, setTodoModalVisible] = useRecoilState(modalState);
+  // modal의 상태 확인, 모달이 열렸는지 안열렸는지 확인하는 것
 
   //modal open 버튼 눌렀을 때
   const openModal = () => {
-    setModal(true);
+    setTodoModalVisible(true);
   };
 
   //닫기 버튼 눌렀을 때
-  const closModal = () => {
-    setModal(false);
-  };
   const closeModal = () => {
-    setModal(false);
+    setTodoModalVisible(false);
   };
 
   return (
@@ -30,7 +30,8 @@ function App() {
           할 일 추가
         </button>
       </div>
-      <MModal isOpen={modal} closmodal={closModal} closeModal={closeModal} />
+
+      <TodoModal isOpen={todoModalVisible} closeModal={closeModal} />
     </div>
   );
 }
