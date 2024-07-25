@@ -13,5 +13,4 @@ root.render(
     </RecoilRoot>
   </React.StrictMode>
 );
-
 reportWebVitals();
